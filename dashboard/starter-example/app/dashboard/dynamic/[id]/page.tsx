@@ -1,6 +1,12 @@
-export default async function Page({params}: {params: {id: string}}) {
-    const parameters = await params
+type PageProps = {
+    params: Promise<{ id: string }>;
+};
+
+export default async function Page({ params }: PageProps) {
+    const resolvedParams = await params;
     return (
-        <p>Dynamic Page: {parameters.id}</p>
+        <div>
+            <h1>Dynamic ID: {resolvedParams.id}</h1>
+        </div>
     );
 }
